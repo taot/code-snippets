@@ -1,6 +1,6 @@
 #nav {
-  height: 26px;
   border-bottom: 2px solid #2788da;
+  height: 26px;
 }
 
 #nav li {
@@ -9,16 +9,16 @@
 }
 
 #nav li a {
-  color: #000000;
-  text-decoration: none;
-  padding-top: 4px;
-  display: block;
-  width: 97px;
-  height: 22px;
-  text-align: center;
   background-color: #ececec;
+  color: #000000;
+  display: block;
+  height: 22px;
   margin-left: 1px;
   outline: 0;
+  padding-top: 4px;
+  text-align: center;
+  text-decoration: none;
+  width: 97px;
 }
 
 #nav li a:hover {
