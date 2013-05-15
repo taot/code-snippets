@@ -1,7 +1,7 @@
 package taot.example
 
 import java.util.File
-import play.templates.ScalaTemplateCompiler
+import play.api.templates.ScalaTemplate
 
 object Test  {
 
@@ -11,6 +11,6 @@ object Test  {
     val sourceFile = new File(baseDir, "src/TestTemplate.html")
     val sourceDir = new File(baseDir, "src")
     val generatedDir = new File(baseDir, "target")
-    ScalaTemplateCompiler.compile(sourceFile, sourceDir, generatedDir, "Class", "")
+    ScalaTemplate.compile(sourceFile, sourceDir, generatedDir, "Class", "")
   }
 }
