@@ -13,7 +13,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-
   <repositories>
     <repository>
       <id>scala-tools.org</id>
@@ -21,6 +20,7 @@
       <url>http://scala-tools.org/repo-releases</url>
     </repository>
   </repositories>
+
   <pluginRepositories>
     <pluginRepository>
       <id>scala-tools.org</id>
@@ -63,6 +63,18 @@
             <jvmArg>-Xms64m</jvmArg>
             <jvmArg>-Xmx512m</jvmArg>
           </jvmArgs>
+          <launchers>
+            <launcher>
+              <id>foo</id>
+              <mainClass>Test</mainClass>
+              <args>
+                <arg>arg1</arg>
+              </args>
+              <jvmArgs>
+                <jvmArg>-Xmx128m</jvmArg>
+              </jvmArgs>
+            </launcher>
+          </launchers>
         </configuration>
       </plugin>
     </plugins>
