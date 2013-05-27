@@ -3,8 +3,8 @@
 
 <html lang="en">
   <head>
-  	<%@ include file="/common/global.jsp"%>
-  	<title>Files Uploaded</title>
+    <%@ include file="/common/global.jsp"%>
+    <title>Files Uploaded</title>
   </head>
   <body>
     <h3>Files uploaded</h3>
