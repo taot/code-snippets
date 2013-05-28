@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -33,12 +32,9 @@ public class SampleController {
     }
 
     @RequestMapping(value = "upload", method = RequestMethod.POST)
-    public ModelAndView uploadSubmit(Model model, HttpServletRequest request)
-        throws IOException {
+    public ModelAndView uploadSubmit(Model model, HttpServletRequest request) throws IOException {
 
         logger.info("Uploading file");
-
-        // TODO: Hello
 
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
@@ -56,8 +52,7 @@ public class SampleController {
             MultipartFile mFile = entry.getValue();
             String filename = mFile.getOriginalFilename();
             InputStream is = mFile.getInputStream();
-            FileOutputStream fos = new FileOutputStream(new File(destDir,
-                filename));
+            FileOutputStream fos = new FileOutputStream(new File(destDir, filename));
             FileCopyUtils.copy(is, fos);
             uploaded.add(filename);
         }
