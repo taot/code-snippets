@@ -1,0 +1,10 @@
+[Regular Expression Test: size = 10,000,000]
+Ruby: 1m2s
+Perl: 32s
+Python: 40s
+Scala: 21.9s
+
+[Math Test: size = 100,000,000]
+Perl: 11.9s
+Scala: 2.7s
+Ruby: 59.9s
