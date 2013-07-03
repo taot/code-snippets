@@ -6,4 +6,7 @@
 	<select id="find" parameterType="int" resultType="com.taot.sample.mybatis.bean.Account">
 		select * from ACCOUNT where id = #{id}
 	</select>
+    <select id="findAll" resultType="com.taot.sample.mybatis.bean.Account">
+        select * from ACCOUNT
+    </select>
 </mapper>

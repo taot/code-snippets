@@ -2,6 +2,7 @@ package com.taot.sample.mybatis;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -19,8 +20,19 @@ public class App {
         try {
             session = ssf.openSession();
             AccountMapper mapper = session.getMapper(AccountMapper.class);
-            Account account = mapper.find(1);
-            System.out.println("Account: " + account.toString());
+            
+            {
+                Account account = mapper.find(1);
+                System.out.println("select: " + account.toString());
+            }
+            
+            {
+                List<Account> accounts = mapper.findAll();
+                System.out.println("selectAll:");
+                for (Account a : accounts) {
+                    System.out.println("    " + a.toString());
+                }
+            }
         } finally {
             if (session != null) {
                 session.close();
