@@ -9,4 +9,7 @@
     <select id="findAll" resultType="com.taot.sample.mybatis.bean.Account">
         select * from ACCOUNT
     </select>
+    <insert id="insert" parameterType="com.taot.sample.mybatis.bean.Account">
+        insert into ACCOUNT values (#{id}, #{owner})
+    </insert>
 </mapper>

@@ -9,4 +9,6 @@ public interface AccountMapper {
     Account find(Integer id);
     
     List<Account> findAll();
+    
+    boolean insert(Account account);
 }
