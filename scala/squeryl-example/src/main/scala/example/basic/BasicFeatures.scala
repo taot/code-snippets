@@ -1,4 +1,4 @@
-package example
+package scala.example.basic
 
 import scala.math.BigDecimal
 import scala.math.BigDecimal._
@@ -10,12 +10,8 @@ import org.squeryl.{ Schema, Session, SessionFactory }
 import org.squeryl.adapters.MySQLAdapter
 import org.squeryl.annotations.Column
 
-object TestSqueryl {
+object BasicFeatures {
   def main(args: Array[String]): Unit = {
-    testSqueryl
-  }
-
-  private def testSqueryl(): Unit = {
     Class.forName("com.mysql.jdbc.Driver");
     SessionFactory.concreteFactory = Some { () =>
       val session = Session.create(
