@@ -9,8 +9,8 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.taot.example.entity.Account;
-import com.taot.example.entity.CashPosition;
 import com.taot.example.entity.Position;
+import com.taot.example.entity.SecurityPosition;
 
 public class App {
 
@@ -24,8 +24,8 @@ public class App {
 //        saveAccount();
 //        deleteAccount();
         
-//        savePosition();
-        loadPosition();
+        savePosition();
+//        loadPosition();
     }
 
     private static void loadPosition() {
@@ -36,7 +36,7 @@ public class App {
 //        for (Object o : q.list()) {
 //            System.out.println(o);
 //        }
-        Position p = (Position)session.load(Position.class, 2L);
+        Position p = (Position)session.load(Position.class, 1L);
         System.out.println(p);
 
         tx.commit();
@@ -47,11 +47,11 @@ public class App {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-//        Position p = new SecurityPosition(1L, "GOOG", new BigDecimal(1000), new BigDecimal(100));
-//        session.saveOrUpdate(p);
-        
-        Position p = new CashPosition(1L, new BigDecimal(50000));
+        Position p = new SecurityPosition(1L, "GOOG", new BigDecimal(1000), new BigDecimal(100));
         session.saveOrUpdate(p);
+        
+//        Position p = new CashPosition(1L, new BigDecimal(50000));
+//        session.saveOrUpdate(p);
 
         tx.commit();
         sessionFactory.close();
