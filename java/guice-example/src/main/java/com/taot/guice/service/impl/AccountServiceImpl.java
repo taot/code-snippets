@@ -11,9 +11,8 @@ public class AccountServiceImpl implements AccountService {
     @Inject
     private AccountDao accountDao;
 
-    public Account findByName(String name) {
+    public Account findById(Long id) {
         System.out.println("AccountServiceImpl.findByName");
-        accountDao.findByName(name);
-        return null;
+        return accountDao.findById(id);
     }
 }

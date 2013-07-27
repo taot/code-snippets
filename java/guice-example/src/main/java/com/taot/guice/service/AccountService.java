@@ -4,5 +4,5 @@ import com.taot.guice.model.Account;
 
 public interface AccountService {
     
-    Account findByName(String name);
+    Account findById(Long id);
 }
