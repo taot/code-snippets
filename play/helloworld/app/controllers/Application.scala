@@ -1,13 +1,20 @@
 package controllers
 
+import service.HelloService
+
+import views._
+
 import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 
-import views._
+import javax.inject.Inject
 
-object Application extends Controller {
+class Application extends Controller {
+
+  @Inject
+  private var helloService: HelloService = null
 
   /**
    * Describes the hello form.
@@ -26,6 +33,8 @@ object Application extends Controller {
    * Home page
    */
   def index = Action {
+    val greeting = helloService.sayHello("Terry")
+    println(greeting)
     Ok(html.index(helloForm))
   }
 
