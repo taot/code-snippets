@@ -4,6 +4,8 @@
 .classpath
 .project
 .settings/
+dist/
+logs/
 project/project/
 project/target/
 target/
