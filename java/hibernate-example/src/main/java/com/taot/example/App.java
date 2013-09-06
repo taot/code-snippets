@@ -20,11 +20,11 @@ public class App {
         System.out.println("Starting...");
         sessionFactory = createSessionFactory();
 
-//        loadAccount();
+        loadAccount();
 //        saveAccount();
 //        deleteAccount();
-        
-        savePosition();
+
+//        savePosition();
 //        loadPosition();
     }
 
@@ -42,14 +42,14 @@ public class App {
         tx.commit();
         sessionFactory.close();
     }
-    
+
     private static void savePosition() {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
         Position p = new SecurityPosition(1L, "GOOG", new BigDecimal(1000), new BigDecimal(100));
         session.saveOrUpdate(p);
-        
+
 //        Position p = new CashPosition(1L, new BigDecimal(50000));
 //        session.saveOrUpdate(p);
 
@@ -90,7 +90,7 @@ public class App {
 
         //Account acc = (Account) session.load(Account.class, 1L);
         //System.out.println("Account = " + acc);
-        
+
 //        Query q = session.createQuery("from Account cat where Owner = :name");
 //        q.setString("name", "DataYes");
         Query q = session.createQuery("from Account cat order by Id asc");
