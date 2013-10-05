@@ -30,6 +30,7 @@
     <orderEntry type="library" name="SBT: org.mockito:mockito-core:1.9.5" level="project" />
     <orderEntry type="library" name="SBT: org.objenesis:objenesis:1.0" level="project" />
     <orderEntry type="library" name="SBT: org.scala-tools.testing:specs_2.10:1.6.9" level="project" />
+    <orderEntry type="library" name="SBT: org.slf4j:slf4j-api:1.7.5" level="project" />
   </component>
 </module>
 

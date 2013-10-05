@@ -12,11 +12,12 @@
     <file path="/sample-configurations.xml" changelist="66362c46-8d23-4272-b6cc-49435978e18b" time="1380859691747" ignored="false" />
     <file path="/TestHashMap.java" changelist="66362c46-8d23-4272-b6cc-49435978e18b" time="1380887276198" ignored="false" />
     <file path="/Cache.java" changelist="66362c46-8d23-4272-b6cc-49435978e18b" time="1380990866809" ignored="false" />
-    <file path="/AbstractCache.java" changelist="66362c46-8d23-4272-b6cc-49435978e18b" time="1380992236342" ignored="false" />
-    <file path="/Element.java" changelist="66362c46-8d23-4272-b6cc-49435978e18b" time="1380992393433" ignored="false" />
+    <file path="/AbstractCache.java" changelist="66362c46-8d23-4272-b6cc-49435978e18b" time="1380994502113" ignored="false" />
+    <file path="/Element.java" changelist="66362c46-8d23-4272-b6cc-49435978e18b" time="1380992695454" ignored="false" />
     <file path="/TransactionManager.java" changelist="66362c46-8d23-4272-b6cc-49435978e18b" time="1380989698484" ignored="false" />
     <file path="/MCacheException.java" changelist="66362c46-8d23-4272-b6cc-49435978e18b" time="1380989282193" ignored="false" />
     <file path="/Transaction.java" changelist="66362c46-8d23-4272-b6cc-49435978e18b" time="1380992222147" ignored="false" />
+    <file path="/TestCache.java" changelist="66362c46-8d23-4272-b6cc-49435978e18b" time="1380994981761" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,68 +77,7 @@
     <favorites_list name="ehcache" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Cache.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/taot/mcache/Cache.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="22" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractCache.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/taot/mcache/AbstractCache.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="78" selection-start="435" selection-end="435" vertical-scroll-proportion="0.34124088">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Element.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/taot/mcache/Element.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="18" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Map.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar:///usr/lib/jvm/java-7-openjdk/src.zip!/java/util/Map.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="259" column="6" selection-start="13128" selection-end="13128" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Transaction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/taot/mcache/Transaction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="31" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransactionManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/taot/mcache/TransactionManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="1201" selection-end="1201" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -148,7 +88,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/test/TestEhcache.java" />
-        <option value="$PROJECT_DIR$/build.sbt" />
         <option value="$PROJECT_DIR$/src/main/resources/sample-configurations.xml" />
         <option value="$PROJECT_DIR$/src/main/java/test/TestInfinispan.java" />
         <option value="$PROJECT_DIR$/src/main/java/test/TestHashMap.java" />
@@ -156,9 +95,11 @@
         <option value="$PROJECT_DIR$/src/main/java/me/taot/mcache/MCacheException.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/taot/mcache/TransactionManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/taot/mcache/Cache.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/taot/mcache/Transaction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/taot/mcache/AbstractCache.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/taot/mcache/Element.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/taot/mcache/AbstractCache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/taot/mcache/Transaction.java" />
+        <option value="$PROJECT_DIR$/build.sbt" />
+        <option value="$PROJECT_DIR$/src/test/java/me/taot/mcache/TestCache.java" />
       </list>
     </option>
   </component>
@@ -177,7 +118,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
+    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -192,6 +133,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -242,7 +184,45 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mcache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mcache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mcache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mcache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -261,10 +241,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -297,18 +273,17 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -378,19 +353,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -416,6 +378,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -480,7 +455,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="719" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -493,7 +468,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21036585" sideWeight="0.67132866" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21036585" sideWeight="0.67132866" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -568,54 +543,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.ivy2/cache/org.infinispan/infinispan-core/srcs/infinispan-core-5.3.0.Final-sources.jar!/org/infinispan/Version.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-7.426087" />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.lucene/lucene-core/srcs/lucene-core-3.6.2-sources.jar!/org/apache/lucene/util/Version.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="12" selection-start="1318" selection-end="1318" vertical-scroll-proportion="-2.9413407" />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.lucene/lucene-core/srcs/lucene-core-3.6.2-sources.jar!/org/apache/lucene/analysis/standard/StandardAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="33" selection-start="4327" selection-end="4334" vertical-scroll-proportion="0.6201117" />
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-7-openjdk/src.zip!/java/util/concurrent/ConcurrentHashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="33" selection-start="1736" selection-end="1736" vertical-scroll-proportion="0.33240223">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/TestInfinispan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="0" selection-start="2757" selection-end="2757" vertical-scroll-proportion="3.252174">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/TestHashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="5" selection-start="346" selection-end="346" vertical-scroll-proportion="0.37226278">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#538#554#0" expanded="true" />
-            <element signature="e#615#631#0" expanded="true" />
-            <element signature="e#697#718#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/Position.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="28" selection-start="211" selection-end="211" vertical-scroll-proportion="0.37226278">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/taot/mcache/CacheException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="44" selection-start="181" selection-end="181" vertical-scroll-proportion="0.24817519">
@@ -644,32 +571,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/taot/mcache/Cache.java">
+    <entry file="jar:///usr/lib/jvm/java-7-openjdk/src.zip!/java/util/concurrent/locks/Lock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="22" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="182" column="9" selection-start="8346" selection-end="8346" vertical-scroll-proportion="0.33211678" />
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-7-openjdk/src.zip!/java/util/concurrent/ConcurrentMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="6" selection-start="3829" selection-end="3829" vertical-scroll-proportion="0.70437956" />
       </provider>
     </entry>
     <entry file="jar:///usr/lib/jvm/java-7-openjdk/src.zip!/java/util/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="259" column="6" selection-start="13128" selection-end="13128" vertical-scroll-proportion="0.0">
+        <state line="259" column="6" selection-start="13128" selection-end="13128" vertical-scroll-proportion="0.031021899">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/taot/mcache/Element.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="15" selection-start="267" selection-end="267" vertical-scroll-proportion="0.310219">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/taot/mcache/Transaction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="31" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/taot/mcache/Element.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="18" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
+        <state line="13" column="19" selection-start="372" selection-end="372" vertical-scroll-proportion="0.40328467">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -678,10 +606,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/taot/mcache/AbstractCache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="78" selection-start="435" selection-end="435" vertical-scroll-proportion="0.34124088">
+        <state line="98" column="0" selection-start="2749" selection-end="2749" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/taot/mcache/Cache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="22" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/me/taot/mcache/entity/Position.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="26" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.sbt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/me/taot/mcache/TestCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="159" selection-end="159" vertical-scroll-proportion="0.34124088">
+          <folding />
         </state>
       </provider>
     </entry>

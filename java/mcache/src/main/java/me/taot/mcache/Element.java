@@ -9,6 +9,9 @@ public class Element<T> {
 
     private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
+    Element() {
+    }
+
     Element(T value) {
         this.value = value;
     }

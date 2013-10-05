@@ -1,4 +1,4 @@
-package test;
+package me.taot.mcache.entity;
 
 import java.io.Serializable;
 

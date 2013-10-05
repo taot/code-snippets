@@ -8,26 +8,18 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Transaction {
 
-    private Lock myLock = new ReentrantLock();
-
     private Set<Lock> readLocks = new HashSet<>();
-
     private Set<Lock> writeLocks = new HashSet<>();
 
     void commit() {
-        myLock.lock();
-        try {
-            for (Lock lock : readLocks) {
-                lock.unlock();
-            }
-            readLocks.clear();
-            for (Lock lock : writeLocks) {
-                lock.unlock();
-            }
-            writeLocks.clear();
-        } finally {
-            myLock.unlock();
+        for (Lock lock : readLocks) {
+            lock.unlock();
         }
+        readLocks.clear();
+        for (Lock lock : writeLocks) {
+            lock.unlock();
+        }
+        writeLocks.clear();
     }
 
     void rollback() {
