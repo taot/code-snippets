@@ -2,6 +2,8 @@
 *.swp
 .cache
 .classpath
+.idea/
+.idea_modules/
 .project
 .settings/
 dist/

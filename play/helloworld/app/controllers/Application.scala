@@ -10,6 +10,7 @@ import play.api.data._
 import play.api.data.Forms._
 
 import javax.inject.Inject
+import types.AssetClass
 
 class Application extends Controller {
 
@@ -46,6 +47,11 @@ class Application extends Controller {
       formWithErrors => BadRequest(html.index(formWithErrors)),
       {case (name, repeat, color) => Ok(html.hello(name, repeat.toInt, color))}
     )
+  }
+
+  def showAssetClasses = Action {
+    val ac = AssetClass.fromDbValue(1L)
+    Ok(AssetClass.values().toList.toString + " " + ac)
   }
 
 }

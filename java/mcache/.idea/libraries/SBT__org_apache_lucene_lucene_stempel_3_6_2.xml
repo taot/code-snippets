@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="SBT: org.apache.lucene:lucene-stempel:3.6.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.lucene/lucene-stempel/jars/lucene-stempel-3.6.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.lucene/lucene-stempel/docs/lucene-stempel-3.6.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.lucene/lucene-stempel/srcs/lucene-stempel-3.6.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

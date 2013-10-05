@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="SBT: org.hibernate:hibernate-search-infinispan:4.3.0.Final">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.hibernate/hibernate-search-infinispan/jars/hibernate-search-infinispan-4.3.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.hibernate/hibernate-search-infinispan/docs/hibernate-search-infinispan-4.3.0.Final-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.hibernate/hibernate-search-infinispan/srcs/hibernate-search-infinispan-4.3.0.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
