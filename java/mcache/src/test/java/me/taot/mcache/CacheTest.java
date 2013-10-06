@@ -2,7 +2,7 @@ package me.taot.mcache;
 
 import org.junit.Test;
 
-public class TestCache {
+public class CacheTest {
 
     @Test
     public void testTest() {
