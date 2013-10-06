@@ -1,36 +1,26 @@
 package me.taot.mcache;
 
+import me.taot.mcache.lock.ReadWriteLock;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Transaction {
 
-    private Set<Lock> readLocks = new HashSet<>();
-    private Set<Lock> writeLocks = new HashSet<>();
+    private Set<ReadWriteLock> locks = new HashSet<>();
 
     void commit() {
-        for (Lock lock : readLocks) {
-            lock.unlock();
+        for (ReadWriteLock l : locks) {
+            l.unlock();
         }
-        readLocks.clear();
-        for (Lock lock : writeLocks) {
-            lock.unlock();
-        }
-        writeLocks.clear();
     }
 
     void rollback() {
         throw new UnsupportedOperationException("rollback is not supported");
     }
 
-    void addReadLock(Lock lock) {
-        readLocks.add(lock);
-    }
-
-    void addWriteLock(Lock lock) {
-        writeLocks.add(lock);
+    void addLock(ReadWriteLock lock) {
+        locks.add(lock);
     }
 }

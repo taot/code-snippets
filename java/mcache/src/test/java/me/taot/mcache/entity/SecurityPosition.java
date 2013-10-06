@@ -10,8 +10,8 @@ public class SecurityPosition extends Position {
     protected SecurityPosition() {
     }
 
-    public SecurityPosition(Long positionId, Long accountId, Long securityId) {
-        super(positionId, accountId);
+    public SecurityPosition(Long positionId, Long accountId, Long ledgerId, Long securityId) {
+        super(positionId, accountId, ledgerId);
         this.securityId = securityId;
     }
 
@@ -32,6 +32,7 @@ public class SecurityPosition extends Position {
         SecurityPosition other = (SecurityPosition) o;
         return this.getPositionId() == other.getPositionId() &&
                 this.getAccountId() == other.getAccountId() &&
+                this.getLedgerId() == other.getLedgerId() &&
                 this.getSecurityId() == other.getSecurityId();
     }
 }

@@ -4,7 +4,6 @@ import me.taot.mcache.CacheException;
 
 import javax.persistence.Column;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,11 +11,11 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public class CloneUtil {
+public class EntityUtil {
 
     private static ConcurrentMap<Class, Cloner> cloners = new ConcurrentHashMap<>();
 
-    private CloneUtil() {
+    private EntityUtil() {
     }
 
     public static <T> T clone(T obj) {
@@ -25,7 +24,19 @@ public class CloneUtil {
         }
         Class<?> clazz = obj.getClass();
         Cloner cloner = getCloner(clazz);
-        return (T) cloner.doClone(obj);
+        return (T) cloner.clone(obj);
+    }
+
+    public static <T> boolean equal(T o1, T o2) {
+        if (o1 == o2) {
+            return true;
+        }
+        if (o1 != null) {
+            Class<?> clazz = o1.getClass();
+            Cloner cloner = getCloner(clazz);
+            return cloner.equal(o1, o2);
+        }
+        return false;
     }
 
     private static Cloner getCloner(Class<?> clazz) {
@@ -59,7 +70,40 @@ public class CloneUtil {
             }
         }
 
-        Object doClone(Object obj) {
+        boolean equal(Object o1, Object o2) {
+            if (o1 == o2) {
+                return true;
+            }
+            if (o1 == null || o2 == null) {
+                return false;
+            }
+            if (!o1.getClass().equals(o2.getClass())) {
+                return false;
+            }
+            boolean result = true;
+            try {
+                for (Accessor accessor : accessorMap.values()) {
+                    Object v1 = accessor.getGetter().invoke(o1);
+                    Object v2 = accessor.getGetter().invoke(o2);
+                    if (v1 == v2) {
+                        continue;
+                    }
+                    if (v1 == null || v2 == null) {
+                        result = false;
+                        break;
+                    }
+                    if (!v1.equals(v2)) {
+                        result = false;
+                        break;
+                    }
+                }
+                return result;
+            } catch (Exception e) {
+                throw new CacheException("Error comparing objects: " + e.getMessage(), e);
+            }
+        }
+
+        Object clone(Object obj) {
             try {
                 Object newObj = constructor.newInstance();
                 for (Accessor accessor : accessorMap.values()) {

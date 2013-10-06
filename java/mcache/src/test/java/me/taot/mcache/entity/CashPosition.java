@@ -9,8 +9,8 @@ public class CashPosition extends Position {
     protected CashPosition() {
     }
 
-    public CashPosition(Long positionId, Long accountId, String currency) {
-        super(positionId, accountId);
+    public CashPosition(Long positionId, Long accountId, Long ledgerId, String currency) {
+        super(positionId, accountId, ledgerId);
         this.currency = currency;
     }
 
@@ -31,6 +31,7 @@ public class CashPosition extends Position {
         CashPosition other = (CashPosition) o;
         return this.getPositionId() == other.getPositionId() &&
                 this.getAccountId() == other.getAccountId() &&
+                this.getLedgerId() == other.getLedgerId() &&
                 stringEquals(this.getCurrency(), other.getCurrency());
     }
 

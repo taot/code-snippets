@@ -12,12 +12,15 @@ abstract public class Position implements Serializable {
 
     private Long accountId;
 
+    private Long ledgerId;
+
     protected Position() {
     }
 
-    public Position(Long positionId, Long accountId) {
+    public Position(Long positionId, Long accountId, Long ledgerId) {
         this.positionId = positionId;
         this.accountId = accountId;
+        this.ledgerId = ledgerId;
     }
 
     @Id
@@ -26,7 +29,7 @@ abstract public class Position implements Serializable {
         return positionId;
     }
 
-    public void setPositionId(Long positionId) {
+    private void setPositionId(Long positionId) {
         this.positionId = positionId;
     }
 
@@ -37,5 +40,14 @@ abstract public class Position implements Serializable {
 
     public void setAccountId(Long accountId) {
         this.accountId = accountId;
+    }
+
+    @Column
+    public Long getLedgerId() {
+        return ledgerId;
+    }
+
+    public void setLedgerId(Long ledgerId) {
+        this.ledgerId = ledgerId;
     }
 }

@@ -1,13 +1,12 @@
 package me.taot.mcache;
 
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import me.taot.mcache.lock.ReadWriteLock;
 
 public class Element<T> {
 
     private T value;
 
-    private final ReadWriteLock lock = new ReentrantReadWriteLock();
+    private final ReadWriteLock lock = new ReadWriteLock();
 
     Element() {
     }

@@ -1,10 +1,10 @@
 package me.taot.mcache;
 
+import me.taot.mcache.util.EntityUtil;
+
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public abstract class AbstractCache<T, K> implements Cache<T, K> {
 
@@ -16,9 +16,8 @@ public abstract class AbstractCache<T, K> implements Cache<T, K> {
         if (elem == null) {
             return null;
         }
-        Lock readLock = elem.getLock().readLock();
-        readLock.lock();
-        TransactionManager.current().addReadLock(readLock);
+        elem.getLock().lockRead();
+        TransactionManager.current().addLock(elem.getLock());
         T value = elem.getValue();
         if (value == null) {
             return null;
@@ -35,25 +34,24 @@ public abstract class AbstractCache<T, K> implements Cache<T, K> {
         Element<T> elem = map.get(id);
         if (elem == null) {
             final Element<T> newE = new Element<T>();
-            newE.getLock().writeLock().lock();
+            newE.getLock().lockWrite();
             elem = map.putIfAbsent(id, newE);
             if (elem == null) {
                 elem = newE;
             } else {
-                elem.getLock().writeLock().lock();
-                newE.getLock().writeLock().unlock();
+                elem.getLock().lockWrite();
+                newE.getLock().unlock();
             }
+        } else {
+            elem.getLock().lockWrite();
         }
-        TransactionManager.current().addWriteLock(elem.getLock().writeLock());
+        TransactionManager.current().addLock(elem.getLock());
         T oldValue = elem.getValue();
         if (hasChanged(value, oldValue)) {
-            elem.setValue(value);
-            if (oldValue != null) {
-                removeIndexes(oldValue);
-            }
-            if (value != null) {
-                createIndexes(value);
-            }
+            removeIndexes(elem);
+            T cloned = EntityUtil.clone(value);
+            elem.setValue(cloned);
+            createIndexes(elem);
         }
     }
 
@@ -63,25 +61,21 @@ public abstract class AbstractCache<T, K> implements Cache<T, K> {
         if (elem == null) {
             return;
         }
-        TransactionManager.current().addWriteLock(elem.getLock().writeLock());
-        T value = elem.getValue();
-        if (value != null) {
-            removeIndexes(value);
-        }
+        elem.getLock().lockWrite();
+        TransactionManager.current().addLock(elem.getLock());
+        removeIndexes(elem);
     }
 
-    abstract protected void createIndexes(T value);
+    abstract protected void createIndexes(Element<T> e);
 
-    abstract protected void removeIndexes(T value);
+    abstract protected void removeIndexes(Element<T> e);
 
     protected T clone(T value) {
-        // TODO
-        throw new UnsupportedOperationException();
+        return EntityUtil.clone(value);
     }
 
     protected boolean hasChanged(T value, T oldValue) {
-        // TODO
-        throw new UnsupportedOperationException();
+        return !EntityUtil.equal(value, oldValue);
     }
 
     protected Element<T> getElement(K id) {
