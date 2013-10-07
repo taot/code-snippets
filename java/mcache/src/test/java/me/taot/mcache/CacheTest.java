@@ -216,4 +216,82 @@ public class CacheTest {
             }
         });
     }
+
+    @Test
+    public void testMultiThread() {
+        final long OBJECT_NUM = 1000;
+        final long UPDATE_NUM = 10;
+        final long SLEEP_INTERVAL = 100;
+        final SecurityPositionCache cache = new SecurityPositionCache();
+
+        // add initial data to cache
+        transaction(new Runnable() {
+            public void run() {
+                for (long i = 0; i < OBJECT_NUM; i++) {
+                    SecurityPosition p = new SecurityPosition(i, i, i, i);
+                    cache.put(p.getPositionId(), p);
+                }
+            }
+        });
+
+        Runnable writer = new Runnable() {
+            public void run() {
+                transaction(new Runnable() {
+                    public void run() {
+                        logger.info("Writer thread started.");
+                        for (long i = 0; i < UPDATE_NUM; i++) {
+                            logger.info("Writer updating object #{}...", i);
+                            SecurityPosition p = cache.get(i);
+                            p.setAccountId(i + 1);
+                            p.setLedgerId(i + 2);
+                            p.setSecurityId(i + 3);
+                            cache.put(i, p);
+                            sleep("Writer", SLEEP_INTERVAL);
+                        }
+                    }
+                });
+            }
+        };
+
+        Runnable reader = new Runnable() {
+            public void run() {
+                transaction(new Runnable() {
+                    public void run() {
+                        logger.info("Reader thread started.");
+                        sleep("Reader", SLEEP_INTERVAL / 2);
+                        for (long i = 0; i < UPDATE_NUM; i++) {
+                            logger.info("Reader checking object #{}", i);
+                            SecurityPosition p = cache.get(i);
+                            Assert.assertEquals((Long) i, p.getPositionId());
+                            Assert.assertEquals((Long) (i + 1), p.getAccountId());
+                            Assert.assertEquals((Long) (i + 2), p.getLedgerId());
+                            Assert.assertEquals((Long) (i + 3), p.getSecurityId());
+                            sleep("Reader", SLEEP_INTERVAL);
+                        }
+                    }
+                });
+            }
+        };
+
+        Thread t0 = new Thread(writer);
+        Thread t1 = new Thread(reader);
+        t0.start();
+        t1.start();
+        try {
+            t0.join();
+            t1.join();
+        } catch (InterruptedException e) {
+            Assert.fail();
+            e.printStackTrace();
+        }
+    }
+
+    private void sleep(String name, long millis) {
+        logger.info("{} sleeping {}ms...", name, millis);
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            // ignore
+        }
+    }
 }
