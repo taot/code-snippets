@@ -13,10 +13,12 @@ object Application extends Controller {
 
   def test = ActionRequestM {
     for {
-      callback <- param("callback").required
-      n <- param("n").asInt
+      callbackOpt <- param("callback").optional
+      n <- param("n").asInt.default(1)
+      l <- param("l").asLong
+      date <- param("asOfDate").asLocalDate
     } yield {
-      Ok("callback: " + callback + "  n: " + n + "  n.class: " + n.getClass)
+      Ok("callback: " + callbackOpt + ", n: " + n + ", l: " + l + ", date: " + date)
     }
   }
 }
