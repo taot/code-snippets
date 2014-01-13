@@ -6,6 +6,8 @@
 .idea_modules/
 .project
 .settings/
+.target/
+bin/
 dist/
 logs/
 project/project/
