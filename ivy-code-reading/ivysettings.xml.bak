@@ -1,0 +1,11 @@
+<ivysettings>
+    <settings defaultResolver="mytest"/>
+    <resolvers>
+        <!-- url name="mytest" m2compatible="true">
+             <ivy pattern="http://ivyrep.mycompany.com/[module]/[revision]/ivy-[revision].xml" />
+             <artifact pattern="http://ivyrep.mycompany.com/[module]/[revision]/[artifact]-[revision].[ext]" />
+             <artifact pattern="http://ivyrep.mycompany.com/[module]/[revision]/[artifact].[ext]" />
+        </url -->
+        <ibiblio name="example" m2compatible="true" pattern="http://repo1.maven.org/maven2/[organisation]/[module]/[revision]/[artifact]-revision].[ext]"/>
+    </resolvers>
+</ivysettings>
