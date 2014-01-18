@@ -4,7 +4,7 @@ import Keys._
 object TestMultiBuild extends Build {
 
   lazy val testGenerator = Project(id = "test-generator", base = file("."))
-    .aggregate(gen, use)
+    .aggregate(gen, use).dependsOn(gen, use)
 
 
   lazy val gen = Project(id = "gen", base = file("gen"))

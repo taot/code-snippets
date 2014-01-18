@@ -1,8 +1,12 @@
-package child1
+package use
 
-class Child1 {
+import generated.A
 
-  def hi(name: String): Unit = {
-    println("Sub project child1: hi " + name)
+object MyUse {
+
+  def main(args: Array[String]): Unit = {
+    println("Sub project child1: hi ")
+    val a = new A
+    a.hi()
   }
 }
