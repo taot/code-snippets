@@ -7,9 +7,11 @@ import scala.concurrent.ExecutionContext.Implicits.global
 object Altimeter {
   case class RateChange(amount: Float)
   case class AltitudeUpdate(altitude: Double)
+
+  def apply() = new Altimeter with ProductionEventSource
 }
 
-class Altimeter extends Actor with ActorLogging with EventSource {
+class Altimeter extends Actor with ActorLogging { this: EventSource =>
 
   import Altimeter._
 
@@ -27,7 +29,7 @@ class Altimeter extends Actor with ActorLogging with EventSource {
 
   case object Tick
 
-  def receive = eventSourceRecevive orElse altimeterReceive
+  def receive = eventSourceReceive orElse altimeterReceive
 
   def altimeterReceive: Receive = {
     case RateChange(amount) =>
@@ -37,7 +39,7 @@ class Altimeter extends Actor with ActorLogging with EventSource {
       val tick = System.currentTimeMillis()
       altitude = altitude + ((tick - lastTick) / 60000.0) * rateOfClimb
       lastTick = tick
-      sendEvents(AltitudeUpdate(altitude))
+      sendEvent(AltitudeUpdate(altitude))
   }
 
   override def postStop(): Unit = ticker.cancel()
