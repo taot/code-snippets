@@ -3,5 +3,8 @@
     <dependencies>
         <dependency org="commons-lang" name="commons-lang" rev="2.0"/>
         <dependency org="commons-cli" name="commons-cli" rev="1.0"/>
+        <dependency org="com.datayes" name="trading" rev="1.2.2-SNAPSHOT" changing="true">
+            <artifact name="trading" ext="jar"/>
+        </dependency>
     </dependencies>
 </ivy-module>
