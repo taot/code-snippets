@@ -18,6 +18,8 @@ class FailingActor extends Actor with ActorLogging {
 
   import FailingActor._
 
+  log.info("in constructor")
+
   var counter = 0
 
   override def preStart(): Unit = {

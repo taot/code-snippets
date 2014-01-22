@@ -22,11 +22,12 @@ class SupervisorActor extends Actor with ActorLogging {
       log.info("Received start. Sending message to child")
       context.system.scheduler.scheduleOnce(1.seconds, child, FailingActor.Normal("normal"))
       context.system.scheduler.scheduleOnce(2.seconds, child, FailingActor.ToFail("to fail"))
+      context.system.scheduler.scheduleOnce(5.seconds, child, FailingActor.ToFail("to fail again"))
     case Terminated(actor) =>
       log.info(actor.path + " terminated")
   }
 
   override def supervisorStrategy: SupervisorStrategy = OneForOneStrategy() {
-    case _ => Stop
+    case _ => Restart
   }
 }

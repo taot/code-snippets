@@ -9,7 +9,7 @@ object TestSupervision extends App {
   val system = ActorSystem("TestSupervision")
   val actor = system.actorOf(Props[SupervisorActor], "supervisor-actor")
   system.scheduler.scheduleOnce(1.seconds, actor, SupervisorActor.Start)
-  system.scheduler.scheduleOnce(10.seconds) {
+  system.scheduler.scheduleOnce(100.seconds) {
     system.shutdown()
   }
 }
