@@ -30,7 +30,10 @@
                         <td><%= user.get('firstname') %></td>
                         <td><%= user.get('lastname') %></td>
                         <td><%= user.get('age') %></td>
-                        <td><a href="#/edit/<%= user.id %>" class="btn">Edit</a></td>
+                        <td>
+                            <a class="btn" href="#/edit/<%= user.id %>">Update</button>
+                            <a class="btn btn-danger delete" href="#/delete/<%= user.id %>">Delete</button>
+                        </td>
                     </tr>
                 <% }); %>
             </tbody>
