@@ -11,7 +11,9 @@ object UserManager {
 
   def list(): List[User] = users
 
-  def get(id: String): Option[User] = users.find(_.id == id)
+  def get(id: String): Option[User] = {
+    users.find(_.id == id)
+  }
 
   def add(user: User): User = withLock {
     val u = user.copy(id = UUID.randomUUID().toString)

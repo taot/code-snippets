@@ -72,8 +72,8 @@
             console.log("$.ajaxPrefilter - options: " + options.toString());
             console.log("$.ajaxPrefilter - originalOptions: " + originalOptions);
             console.log("$.ajaxPrefilter - jqXHR: " + jqXHR);
-            // options.url = 'http://backbonejs-beginner.herokuapp.com' + options.url;
-            options.url = 'http://localhost:8080' + options.url;
+            options.url = 'http://backbonejs-beginner.herokuapp.com' + options.url;
+            // options.url = 'http://localhost:8080' + options.url;
         });
 
         $.fn.serializeObject = function() {
