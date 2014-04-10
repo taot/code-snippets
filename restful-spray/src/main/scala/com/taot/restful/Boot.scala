@@ -11,7 +11,7 @@ object Boot {
 
   private val service = system.actorOf(Props[ServiceActor], "pms-web-service")
 
-  private val users = List(User("Terry", "Tao", 30), User("Zhuoran", "Wang", 25))
+  private val users = List(User("Terry", "Tao", "30"), User("Zhuoran", "Wang", "25"))
 
   def main(args: Array[String]): Unit = {
     for (u <- users) UserManager.add(u)

@@ -12,24 +12,24 @@ object UserManager {
   def list(): List[User] = users
 
   def get(id: String): Option[User] = {
-    users.find(_.id == id)
+    users.find { u => u.id.isDefined && u.id.get == id }
   }
 
   def add(user: User): User = withLock {
-    val u = user.copy(id = UUID.randomUUID().toString)
+    val u = user.copy(id = Some(UUID.randomUUID().toString))
     users = u :: users
     u
   }
 
   def update(id: String, user: User): User = withLock {
-    val rest = users.filterNot(_.id == id)
-    val nu = user.copy(id = id)
+    val rest = users.filter { u => u.id.isDefined && u.id.get != id }
+    val nu = user.copy(id = Some(id))
     users = nu :: rest
     nu
   }
 
   def delete(id: String): Unit = withLock {
-    users = users.filterNot(_.id == id)
+    users = users.filter { u => u.id.isDefined && u.id.get == id }
   }
 
   private def withLock[R](f: => R): R = {

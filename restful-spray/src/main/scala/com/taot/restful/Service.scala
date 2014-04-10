@@ -7,8 +7,7 @@ import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import spray.http.HttpHeaders.{`Access-Control-Allow-Methods`, `Access-Control-Allow-Headers`, `Access-Control-Allow-Origin`, Origin}
 import spray.http._
-import scala.Some
-
+import scala.util.{Failure, Success}
 
 trait Service extends HttpService {
 
@@ -18,6 +17,10 @@ trait Service extends HttpService {
 
   import MyJsonProtocol._
 
+  private def getUser(id: String): Future[Option[User]] = Future {
+    UserManager.get(id)
+  }
+
   val myRoute = respondWithHeaders(`Access-Control-Allow-Origin`(AllOrigins), `Access-Control-Allow-Headers`("Content-Type", "Origin", "X-Requested-With", "X-HTTP-Method-Override", "Accept"), `Access-Control-Allow-Methods`(Seq(HttpMethods.GET, HttpMethods.POST, HttpMethods.PUT, HttpMethods.DELETE, HttpMethods.OPTIONS))) {
     respondWithMediaType(MediaTypes.`application/json`) {
       options {  // This is required by Backbonejs
@@ -26,24 +29,26 @@ trait Service extends HttpService {
     }~
     path("users" / Segment) { id =>
       get {
-        complete {
-          println("Received GET /users/" + id)
-          UserManager.get(id) match {
-            case Some(u) => u
-            case None => throw new ClientException("User not found by id " + id)
+        onSuccess(getUser(id)) { userOpt =>
+          userOpt match {
+            case Some(u) => complete(u)
+            case None => complete("user not found by id " + id)
           }
         }
       } ~
       put {
-        complete {
-          println("Received PUT /users/" + id)
-          UserManager.get(id).get
+        entity(as[User]) { u =>
+          complete {
+            println("Received PUT /users/" + id)
+            UserManager.update(id, u)
+          }
         }
       } ~
       delete {
         complete {
           println("Received DELETE /users/" + id)
-          UserManager.get(id).get
+          UserManager.delete(id)
+          "OK"
         }
       }
     } ~
@@ -56,12 +61,14 @@ trait Service extends HttpService {
         }
       } ~
       post {
-//        entity(as[User]) { u =>
-//          println("post invoked")
-//          val nu = UserManager.add(u)
-        val nu = User("Hello", "Hi", 30)
-          complete(nu)
-//        }
+        entity(as[User]) { u =>
+          println("post invoked")
+          onSuccess(Future {
+            UserManager.add(u)
+          }) { nu =>
+            complete(nu)
+          }
+        }
       }
     }
   }
