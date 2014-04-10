@@ -64,7 +64,14 @@
 
     <script>
 
+        var printObject = function(obj) {
+
+        };
+
         $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
+            console.log("$.ajaxPrefilter - options: " + options.toString());
+            console.log("$.ajaxPrefilter - originalOptions: " + originalOptions);
+            console.log("$.ajaxPrefilter - jqXHR: " + jqXHR);
             options.url = 'http://backbonejs-beginner.herokuapp.com' + options.url;
         });
 
