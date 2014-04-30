@@ -20,12 +20,27 @@ public class App {
         System.out.println("Starting...");
         sessionFactory = createSessionFactory();
 
-        loadAccount();
+        insertUpdateAccount();
+
+//        loadAccount();
 //        saveAccount();
 //        deleteAccount();
 
 //        savePosition();
 //        loadPosition();
+    }
+
+    private static void insertUpdateAccount() {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        Account account = new Account("Terry Tao", BigDecimal.valueOf(4000000));
+        account.setId(5L);
+
+        session.save(account);
+
+        tx.commit();
+        session.close();
     }
 
     private static void loadPosition() {
@@ -40,7 +55,7 @@ public class App {
         System.out.println(p);
 
         tx.commit();
-        sessionFactory.close();
+        session.close();
     }
 
     private static void savePosition() {
@@ -54,7 +69,7 @@ public class App {
 //        session.saveOrUpdate(p);
 
         tx.commit();
-        sessionFactory.close();
+        session.close();
     }
 
     private static void deleteAccount() {
@@ -70,7 +85,7 @@ public class App {
         }
 
         tx.commit();
-        sessionFactory.close();
+        session.close();
     }
 
     private static void saveAccount() {
@@ -81,7 +96,7 @@ public class App {
         session.saveOrUpdate(acc);
 
         tx.commit();
-        sessionFactory.close();
+        session.close();
     }
 
     private static void loadAccount() {
@@ -101,7 +116,7 @@ public class App {
         }
 
         tx.commit();
-        sessionFactory.close();
+        session.close();
     }
 
     private static SessionFactory createSessionFactory() {

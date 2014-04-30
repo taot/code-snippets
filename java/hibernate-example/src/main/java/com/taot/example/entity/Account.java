@@ -1,5 +1,9 @@
 package com.taot.example.entity;
 
+import org.hibernate.annotations.ResultCheckStyle;
+import org.hibernate.annotations.SQLInsert;
+import org.hibernate.annotations.SQLUpdate;
+
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -11,6 +15,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ACCOUNT")
+@SQLInsert(sql = "insert into ACCOUNT (ID, OWNER, CAPITAL) values (?, ?, ?) on duplicate key update set OWNER = ?, CAPITAL = ?", check = ResultCheckStyle.NONE)
+@SQLUpdate(sql = "insert into ACCOUNT (ID, OWNER, CAPITAL) values (?, ?, ?) on duplicate key update set OWNER = ?, CAPITAL = ?", check = ResultCheckStyle.NONE)
 public class Account {
 
     private Long id;
@@ -30,14 +36,14 @@ public class Account {
 
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     //@GenericGenerator(name="increment", strategy = "increment")
     public Long getId() {
         return id;
     }
 
     
-    private void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
