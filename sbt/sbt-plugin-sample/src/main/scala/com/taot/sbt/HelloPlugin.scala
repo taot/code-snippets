@@ -6,6 +6,7 @@ import java.util.{Properties, Locale}
 import java.io._
 import sbt.File
 import scala.collection.JavaConversions._
+import scala.collection.mutable.ListBuffer
 
 object HelloPlugin extends Plugin {
 
@@ -13,63 +14,33 @@ object HelloPlugin extends Plugin {
 
   val Settings = Seq(
 
-    i18nMessageFile := "messages",
+    messagesPrefix := "messages",
 
-    i18nGen <<= inputTask {
-      (argTask: TaskKey[Seq[String]]) => {
-        (argTask, unmanagedResourceDirectories in Compile, managedSourceDirectories in Compile, i18nMessageFile, moduleName) map {
-          (args, resourceDirs, genResourceDirs, messageFile, moduleName) => Tasks.i18nGen(args, resourceDirs, genResourceDirs, messageFile, moduleName)
-        }
-      }
-    },
-
-    genMessages in Compile := Tasks.generate((sourceManaged in Compile).value / "some_directory")
+    sourceGenerators in Compile <+= (resourceDirectory in Compile, sourceManaged in Compile, messagesPrefix, moduleName) map {
+      (resDir, destDir, msgPrefix, modName) => Tasks.i18nGen(List(resDir), destDir, msgPrefix, modName)
+    }
   )
 
-//  override lazy val projectSettings = Seq(commands += helloCommand)
+  override lazy val projectSettings = super.projectSettings ++ Settings
 
-//  lazy val helloCommand = Command.command("hello") { (state: State) =>
-//    println("Hi")
-//
-//    val provider = state.configuration.provider
-//
-//    val sbtScalaVersion = provider.scalaProvider.version
-//    val sbtVersion = provider.id.version
-//    val sbtInstance = ScalaInstance(sbtScalaVersion, provider.scalaProvider.launcher)
-//    val sbtProject = BuildPaths.projectStandard(state.baseDir)
-//    val sbtOut = BuildPaths.crossPath(BuildPaths.outputDirectory(sbtProject), sbtInstance)
-//
-//    val extracted = Project.extract(state)
-//    val buildStruct = extracted.structure
-//    val buildUnit = buildStruct.units(buildStruct.root)
-////    val settings = Settings(extracted.currentRef, buildStruct, state)
-//
-//    state
-//  }
 
 }
 
 object PluginKeys {
-  lazy val i18nGen = InputKey[Unit]("i18n-gen")
-  lazy val i18nMessageFile = SettingKey[String]("i18n-message-file")
   lazy val genMessages = taskKey[Seq[File]]("gen-messages")
+  lazy val messagesPrefix = settingKey[String]("messages-prefix")
 }
 
 object Tasks {
 
-  def generate(dir: File): Seq[File] = {
-    println(dir)
-    Seq()
-  }
-
-  def i18nGen(args: Seq[String], resourceDirs: Seq[File], genResourceDirs: Seq[File], messageFile: String, moduleName: String): Unit = {
-    println("args = " + args)
+  def i18nGen(resourceDirs: Seq[File], destDir: File, messageFile: String, moduleName: String): Seq[File] = {
     println(resourceDirs)
-    println(genResourceDirs)
+    println(destDir)
 
     val pkgName = getMessagePackageName(moduleName)
-    val genDir = new File(genResourceDirs(0), pkgName)
+    val genDir = new File(destDir, pkgName)
 
+    val buffer = ListBuffer.empty[File]
     for {
       dir <- resourceDirs
       file <- dir.listFiles()
@@ -83,12 +54,14 @@ object Tasks {
         if (! genDir.exists) {
           genDir.mkdirs()
         }
-        genStub(file, locale, genDir, pkgName)
+        val outFile = genStub(file, locale, genDir, pkgName)
+        buffer.append(outFile)
       }
     }
+    buffer.toSeq
   }
 
-  private def genStub(file: File, locale: Locale, genDir: File, pkg: String): Unit = {
+  private def genStub(file: File, locale: Locale, genDir: File, pkg: String): File = {
     val props = new Properties()
     val reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"))
     try {
@@ -108,7 +81,8 @@ object Tasks {
           |
         """.stripMargin)
       props.stringPropertyNames.foreach { key =>
-        writer.println(s"  val ${key} = ???")
+        val sKey = key.replaceAll("\\.", "_")
+        writer.println(s"  val ${sKey} = ???")
       }
       writer.println(
         """
@@ -118,6 +92,7 @@ object Tasks {
     } finally {
       writer.close
     }
+    outputFile
   }
 
   private def getMessagePackageName(name: String): String = {
