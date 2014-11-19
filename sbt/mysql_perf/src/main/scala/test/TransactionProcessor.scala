@@ -38,6 +38,7 @@ class TransactionProcessor(ds: DataSource) {
       stmt.setBigDecimal(2, carryingValue.bigDecimal)
       stmt.setLong(3, positionId)
       stmt.executeUpdate()
+      stmt.close()
     } else {
       val stmt = conn.prepareStatement("insert into positions (account_id, security_id, quantity, carrying_value) values (?, ?, ?, ?)")
       stmt.setLong(1, accountId)
@@ -45,6 +46,7 @@ class TransactionProcessor(ds: DataSource) {
       stmt.setBigDecimal(3, quantity.bigDecimal)
       stmt.setBigDecimal(4, carryingValue.bigDecimal)
       stmt.executeUpdate()
+      stmt.close()
     }
   }
 
@@ -56,6 +58,7 @@ class TransactionProcessor(ds: DataSource) {
       stmt.setBigDecimal(3, receivable.bigDecimal)
       stmt.setLong(4, accountId)
       stmt.executeUpdate()
+      stmt.close()
     } else {
       val stmt = conn.prepareStatement("insert into cash (account_id, cash, margin, payable, receivable) values (?, ?, ?, ?, ?)")
       stmt.setLong(1, accountId)
@@ -64,6 +67,7 @@ class TransactionProcessor(ds: DataSource) {
       stmt.setBigDecimal(4, payable.bigDecimal)
       stmt.setBigDecimal(5, receivable.bigDecimal)
       stmt.executeUpdate()
+      stmt.close()
     }
   }
 
@@ -77,9 +81,13 @@ class TransactionProcessor(ds: DataSource) {
       val id = rs.getLong("id")
       val quantity = rs.getBigDecimal("quantity")
       val carryingValue = rs.getBigDecimal("carrying_value")
+      rs.close()
+      stmt.close()
       return (BigDecimal(quantity), BigDecimal(carryingValue), id)
     }
 
+    rs.close()
+    stmt.close()
     return (ZERO, ZERO, -1)
   }
 
@@ -92,9 +100,13 @@ class TransactionProcessor(ds: DataSource) {
       val cash = rs.getBigDecimal("cash")
       val payable = rs.getBigDecimal("payable")
       val receivable = rs.getBigDecimal("receivable")
+      rs.close()
+      stmt.close()
       return (BigDecimal(cash), BigDecimal(payable), BigDecimal(receivable), true)
     }
 
+    rs.close()
+    stmt.close()
     return (ZERO, ZERO, ZERO, false)
   }
 }
