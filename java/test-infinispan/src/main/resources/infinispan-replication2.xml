@@ -1,0 +1,8 @@
+<infinispan>
+    <jgroups/>
+    <cache-container name="test2" default-cache="repl">
+        <transport cluster="test2"/>
+        <replicated-cache name="repl" mode="SYNC" />
+    </cache-container>
+</infinispan>
+
