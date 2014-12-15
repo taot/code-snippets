@@ -15,6 +15,7 @@ public class TestInfinispan2 {
 //    }
 
     public static void main(String[] args) throws IOException {
+        System.setProperty("jgroups.tcpping.initial_hosts", "10.20.101.135[7800],10.20.101.131[7801]");
         Cache<String, List<Long>> c = CacheProvider.get("mycluster", "my-tcp2.xml");
 //        c.put("a", 1);
         System.out.println(c);
