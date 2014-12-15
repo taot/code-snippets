@@ -17,7 +17,7 @@ public class TestInfinispan {
 //    }
 
     public static void main(String[] args) throws IOException {
-        Cache<String, List<Long>> c = CacheProvider.get("mycluster");
+        Cache<String, List<Long>> c = CacheProvider.get("mycluster", "tcp.xml");
         System.out.println(c);
         int count = 100000;
         while (true) {

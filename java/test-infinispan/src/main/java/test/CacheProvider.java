@@ -11,15 +11,20 @@ import org.infinispan.manager.DefaultCacheManager;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 public class CacheProvider {
 
-    public static Cache<String, List<Long>> get(String clusterName) throws IOException {
+    public static Cache<String, List<Long>> get(String clusterName, String jgroupsConfigFile) throws IOException {
+
+        Properties jgroupProps = new Properties();
+        jgroupProps.setProperty("jgroups.tcpping.initial_hosts", "10.20.101.135[7800],10.20.101.135[7801]");
 
         GlobalConfiguration globalConfig = new GlobalConfigurationBuilder().transport()
                 .defaultTransport()
                 .clusterName(clusterName)
-                //.addProperty("configurationFile", "jgroups-tcp.xml")
+                .addProperty("configurationFile", jgroupsConfigFile)
+                .withProperties(jgroupProps)
                 //.machineId("qa-machine").rackId("qa-rack")
                 .build();
 
