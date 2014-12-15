@@ -18,13 +18,13 @@ public class CacheProvider {
     public static Cache<String, List<Long>> get(String clusterName, String jgroupsConfigFile) throws IOException {
 
         Properties jgroupProps = new Properties();
-        jgroupProps.setProperty("jgroups.tcpping.initial_hosts", "10.20.101.135[7800],10.20.101.135[7801]");
+//        jgroupProps.setProperty("jgroups.tcpping.initial_hosts", "10.20.101.135[7800],10.20.101.135[7801]");
 
         GlobalConfiguration globalConfig = new GlobalConfigurationBuilder().transport()
                 .defaultTransport()
                 .clusterName(clusterName)
                 .addProperty("configurationFile", jgroupsConfigFile)
-                .withProperties(jgroupProps)
+//                .withProperties(jgroupProps)
                 //.machineId("qa-machine").rackId("qa-rack")
                 .build();
 
